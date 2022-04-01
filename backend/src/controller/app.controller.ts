@@ -19,4 +19,13 @@ export class AppController {
   redirect(@Res() res) {
     res.status(302).redirect('/config');
   }
+
+  @Get('/random')
+  random(): number[] {
+    const result = [...Array(100).keys()]
+      .filter((val) => val % 5 === 0)
+      .map((val) => val * 2);
+
+    return result;
+  }
 }
